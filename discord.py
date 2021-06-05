@@ -1,12 +1,6 @@
 
 import discord
-import random
-import requests
-import time
-import asyncio
-import re
 import os
-import sys
 
 client = discord.Client()
 
@@ -37,81 +31,6 @@ async def on_message(message):
 
     if message.author not in users:
         users[message.author] = {}
-
-    if message.content.startswith(prefix + '주식상장'):
-        args = message.content.split()
-        item = args[1]
-        await message.channel.send(f'{item}을 시장에 등록하였습니다')
-        await message.channel.send(f'{item}주식현황을 보여드립니다')
-        while True:
-            args = message.content.split()
-            if len(args) < 2:
-                return
-            item = args[1]
-            if item not in users[message.author]:
-                users[message.author][item] = 0
-            if random.random() > 0.2:
-                users[message.author][item] += 1
-                await message.channel.send(f':small_red_triangle:**`주식명 : {item} 주가상승 : {users[message.author][item]}000원`**')
-            else:
-                users[message.author][item] = max(0, users[message.author][item] + 1)
-                await message.channel.send(f':arrow_down_small:**`주식명 : {item} 주가 하락 : {users[message.author][item]}000원`**')
-            #D:\logs
-            file = open("D:\logs\jusick\jusick.txt", 'a')
-            file.write(f"{users[message.author][item]} {item}")
-            file.write("-------------------------")
-            file.close()
-
-    if message.content.startswith(prefix + '주식구매'):
-        await message.channel.send('해당 주식을 구매하였습니다')
-        await message.channel.send('현재 주식을 가지고 있습니다')
-
-    if message.content.startswith(prefix + '주식판매'):
-        await message.channel.send('해당 주식을 판매하였습니다')
-        await message.channel.send('현재 해당주식을 가지고있지 안습니다')
-
-    if message.author not in users:
-        users[message.author] = {}
-
-    if message.content.startswith(prefix + '강화'):
-        args = message.content.split()
-        if len(args) < 2:
-            return
-        item = args[1]
-        if item not in users[message.author]:
-            users[message.author][item] = 0
-        if random.random() > 0.2:
-            users[message.author][item] += 1
-            await message.channel.send(f':arrow_up:**`강화성공 {item}: {users[message.author][item]}lv`**')
-        else:
-            users[message.author][item] = max(0, users[message.author][item] + 1)
-            await message.channel.send(f':arrow_down:**`강화실패ㅋㅋㅋ{item}: {users[message.author][item]}lv`**')
-        file = open("D:\logs\ganghaw\KRGanghaw.txt", 'a')
-        file.write(f"{users[message.author][item]} {item}")
-        file.write("-------------------------")
-        file.close()
-
-    if message.content.startswith(prefix + '자동강화'):
-        while True:
-            args = message.content.split()
-            if len(args) < 2:
-                return
-            item = args[1]
-            if item not in users[message.author]:
-                users[message.author][item] = 0
-            if random.random() > 0.2:
-                users[message.author][item] += 1
-                await message.channel.send(f':arrow_up:**`강화성공 {item}: {users[message.author][item]}lv`**')
-            else:
-                users[message.author][item] = max(0, users[message.author][item] + 1)
-                await message.channel.send(f':arrow_down:**`강화실패ㅋㅋㅋ{item}: {users[message.author][item]}lv`**')
-            file = open("D:\logs\ganghaw\Aoto\AotoKRGanghaw.txt", 'a')
-            file.write(f"{users[message.author][item]} {item}")
-            file.write("-------------------------")
-            file.close()
-
-        if message.author not in users:
-            users[message.author] = {}
 
     if message.content.startswith(prefix + '명령어'):
         embed = discord.Embed(title="+명령어를 쳐서 명령어를 알아 볼 수 있어요", description="몇몇의 명령어를 제외한다면 거의 모든 명령어가 +로 시작한답니다", color=0x00ffff)
@@ -144,10 +63,6 @@ async def on_message(message):
     if message.content.startswith(prefix + '날씨'):
         embed = discord.Embed(title='날씨',description="오늘은 해가 동쪽에서 서쪽으로 뜹니다 12:30에는 남쪽에 있을것이고 오늘 날씨는 화창하거나, 비, 눈이 올 수 있거, 천둥번개와 폭우가 치며 태풍이나 우박 등이 올 수 있고, 습도는 0~100%, 눈과 비가 올 확률은 0~100%입니다.",color=0x00ffff)
         embed.set_footer(text="출처 : 기상청")
-        await message.channel.send(embed=embed)
-
-    if message.content.startswith(prefix + '시간'):
-        embed = discord.Embed(title='현재 로컬 시간', description=time.strftime('%H시 %M분 %S초', time.localtime(time.time())),color=0x00ffff)
         await message.channel.send(embed=embed)
 
     if message.content.startswith(prefix + "소개"):
