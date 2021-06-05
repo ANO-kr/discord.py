@@ -105,18 +105,6 @@ async def on_message(message):
         await message.channel.send('운영자 호출중...')
         print (f'[{message.channel}]에서 호출됌')
 
-    if message.content.startswith(''):
-        print ('메시지')
-        print (f'채널 : [{message.channel}]')
-        print (f'메시지 : [{message.content}]')
-        print (f'상세항목 : [{message}]') 
-        file = open("D:message.txt", 'a')
-        file.write(f"[{message.channel}]")
-        file.write(f"[{message.content}]")
-        file.write(f"{message}")
-        file.write("-------------------------")
-        file.close()
-
     if message.content.startswith(prefix + '신고'):
         args = message.content.split()
         text = args[1:]
@@ -124,12 +112,6 @@ async def on_message(message):
         print (f'채널 : [{message.channel}]')
         print (f'메시지 : [{message.content}]')
         print (f'상세항목 : [{text}]') 
-        file = open("D:report\list.txt", 'a')
-        file.write(f"[{message.channel}]")
-        file.write(f"[{message.content}]")
-        file.write(f"{text}")
-        file.write("-------------------------")
-        file.close()
         await message.channel.send('신고 접수됨, 고객님의 의견 감사드립니다, 더 나은 세상 TcA')
 
     if message.content.startswith(prefix + '문의'):
@@ -139,12 +121,6 @@ async def on_message(message):
         print (f'채널 : [{message.channel}]')
         print (f'메시지 : [{message.content}]')
         print (f'상세항목 : [{text}]') 
-        file = open("D:doorhe\list.txt", 'a')
-        file.write(f"[{message.channel}]")
-        file.write(f"[{message.content}]")
-        file.write(f"{text}")
-        file.write("-------------------------")
-        file.close()
         await message.channel.send('문의 접수됨, 고객님의 의견 감사드립니다, 더 나은 세상 TcA')
 
     if message.content.startswith(prefix + '고객센터'):
