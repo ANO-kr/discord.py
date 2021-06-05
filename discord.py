@@ -105,24 +105,6 @@ async def on_message(message):
         await message.channel.send('운영자 호출중...')
         print (f'[{message.channel}]에서 호출됌')
 
-    if message.content.startswith(prefix + '신고'):
-        args = message.content.split()
-        text = args[1:]
-        print ('메시지')
-        print (f'채널 : [{message.channel}]')
-        print (f'메시지 : [{message.content}]')
-        print (f'상세항목 : [{text}]') 
-        await message.channel.send('신고 접수됨, 고객님의 의견 감사드립니다, 더 나은 세상 TcA')
-
-    if message.content.startswith(prefix + '문의'):
-        args = message.content.split()
-        text = args[1:]
-        print ('메시지')
-        print (f'채널 : [{message.channel}]')
-        print (f'메시지 : [{message.content}]')
-        print (f'상세항목 : [{text}]') 
-        await message.channel.send('문의 접수됨, 고객님의 의견 감사드립니다, 더 나은 세상 TcA')
-
     if message.content.startswith(prefix + '고객센터'):
         await message.channel.send('뚝딱넷 공식 디스코드에 #고객센터로 문의주세요!')
 
@@ -132,7 +114,6 @@ async def on_message(message):
         embed.add_field(name="discord", value="https://discord.gg/SAqHtwmBk8", inline=False)
         embed.set_footer(text="NEW comuntiy dduckddack.net")
         await message.channel.send(embed=embed)
-
 
     if message.content.startswith(prefix + '초대'):
         await message.channel.send('봇 초대:https://discord.com/api/oauth2/authorize?client_id=789419213613432842&permissions=8&scope=bot')
