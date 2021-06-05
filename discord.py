@@ -24,7 +24,6 @@ if __name__ == "__main__":
 
 @client.event
 async def on_message(message):
-    global users
     prefix = "+"
     if message.author == client.user:
         return
