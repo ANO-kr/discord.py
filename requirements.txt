@@ -1,8 +1,1 @@
 discord.py==0.16.12
-random.py==
-requests.py==
-time.py==
-asyncio.py==
-re.py==
-os.py==
-sys.py==
