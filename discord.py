@@ -282,4 +282,5 @@ async def on_message(message):
         embed.set_footer(text="Friend community team")
         await message.channel.send(embed=embed)
 
-client.run('Nzg5NDE5MjEzNjEzNDMyODQy.X9xx7w.ists2DwKMoQxTJhJt1oMBbm3mvQ')
+access_token = os.environ['BOT_TOKEN']
+client.run('access_token')
